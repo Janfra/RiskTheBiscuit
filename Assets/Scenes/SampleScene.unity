@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   _rb: {fileID: 1218592735}
-  _moveSpeed: 150
+  _moveSpeed: 400
 --- !u!50 &1218592735
 Rigidbody2D:
   serializedVersion: 5
