@@ -13,9 +13,9 @@ public abstract class BaseShootingComponent : MonoBehaviour
 
     [Header("Events")]
     [SerializeField]
-    private UnityEvent _onShoot;
+    private UnityEvent _unityOnShoot;
     [SerializeField]
-    private UnityEvent _onReload;
+    private UnityEvent _unityOnReload;
 
     public bool HasAmmo => _CurrentAmmo > 0;
     public float ReloadDuration => _ReloadDuration;
@@ -39,14 +39,14 @@ public abstract class BaseShootingComponent : MonoBehaviour
         if (HasAmmo)
         {
             OnShoot();
-            _onShoot?.Invoke();
+            _unityOnShoot?.Invoke();
             ReduceAmmo();
         }
     }
 
     public virtual void StartReload()
     {
-        _onReload?.Invoke();
+        _unityOnReload?.Invoke();
         if (_ReloadDuration > 0)
         {
             StartCoroutine(ReloadTimer());
