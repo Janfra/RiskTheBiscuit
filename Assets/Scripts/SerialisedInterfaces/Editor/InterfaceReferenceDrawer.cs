@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using static UnityEngine.Rendering.GPUSort;
 using Object = UnityEngine.Object;
 
 [CustomPropertyDrawer(typeof(InterfaceReference<>))]
@@ -53,6 +52,7 @@ public class InterfaceReferenceDrawer : PropertyDrawer
             underlyingObjectProperty.objectReferenceValue = null;
         }
         EditorGUI.EndProperty();
+        InterfaceReferenceUtil.OnGUI(position, property, label, arguments);
     }
 
     static InterfaceArguments GetInterfaceArguments(FieldInfo fieldInfo)

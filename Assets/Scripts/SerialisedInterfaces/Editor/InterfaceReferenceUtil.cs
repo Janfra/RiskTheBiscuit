@@ -11,7 +11,7 @@ public class InterfaceReferenceUtil
 
         var controlID = GUIUtility.GetControlID(FocusType.Passive) - 1;
         var isHovering = position.Contains(Event.current.mousePosition);
-        var displayString = property.objectReferenceValue == null || isHovering ? $"({arguments.InterfaceType.Name})" : "*";
+        var displayString = property.boxedValue == null || isHovering ? $"({arguments.InterfaceType.Name})" : "*";
 
         DrawInterfaceNameLabel(position, displayString, controlID);
     }

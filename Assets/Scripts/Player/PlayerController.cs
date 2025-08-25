@@ -1,0 +1,125 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerActions
+{
+    [SerializeField]
+    private List<InterfaceReference<ILookListener>> _lookListeners;
+    [SerializeField]
+    private List<InterfaceReference<IMoveListener>> _moveListeners;
+    [SerializeField]
+    private List<InterfaceReference<IAttackListener>> _attackListeners;
+
+    private InputSystem_Actions _inputActions;
+
+    private void Awake()
+    {
+        ValidateListeners(_lookListeners);
+        ValidateListeners(_moveListeners);
+        ValidateListeners(_attackListeners);
+    }
+
+    private void OnEnable()
+    {
+        if (_inputActions == null)
+        {
+            _inputActions = new InputSystem_Actions();
+            _inputActions.Player.SetCallbacks(this);
+        }
+
+        _inputActions.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (_inputActions == null)
+        {
+            return;
+        }
+
+        _inputActions.Player.RemoveCallbacks(this);
+        _inputActions.Player.Disable();
+    }
+
+    private void ValidateListeners<T>(List<T> list)
+    {
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            if (list[i] == null)
+            {
+                list.RemoveAt(i);
+                Debug.LogWarning($"Removed null listener from list {list} at {i}");
+            }
+        }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        foreach (var listener in _attackListeners)
+        {
+            listener.Value.OnAttack(context);
+        }
+    }
+
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        foreach (var listener in _lookListeners)
+        {
+            listener.Value.OnLook(context);
+        }
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        foreach (var listener in _moveListeners)
+        {
+            listener.Value.OnMove(context);
+        }
+    }
+
+    public void OnNext(InputAction.CallbackContext context)
+    {
+        
+    }
+
+    public void OnPrevious(InputAction.CallbackContext context)
+    {
+        
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        
+    }
+}
+
+public interface ILookListener
+{
+    void OnLook(InputAction.CallbackContext context);
+}
+
+public interface IMoveListener
+{
+    void OnMove(InputAction.CallbackContext context);
+}
+
+public interface IAttackListener
+{
+    void OnAttack(InputAction.CallbackContext context);
+}   
