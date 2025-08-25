@@ -57,6 +57,7 @@ public abstract class BaseShootingComponent : MonoBehaviour
         }
     }
 
+    public abstract Vector2 GetIntendedAimDirection();
     protected abstract void OnShoot();
     protected virtual void ReduceAmmo()
     {
