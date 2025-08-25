@@ -1,32 +1,61 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
+    public const float INVULNERABILITY_TIME = 0.3f;
+
     [SerializeField]
     private int _maxHealth = 100;
-    private int _currentHealth;
+
     public event EventHandler<HealthChangedArgument> OnHealthChanged;
+    public bool IsInvulnerable => !_canTakeDamage;
+    public bool IsHealable => _canHeal;
+
+    private bool _canTakeDamage = true;
+    private bool _canHeal = true;
+    private int _currentHealth;
 
     protected virtual void Awake()
     {
         ResetHealth();
     }
 
+    protected virtual void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     public virtual void TakeDamage(HealthChangeData damage)
     {
+        if (IsInvulnerable)
+        {
+            return;
+        }
+
         _currentHealth -= damage.Value;
         NotifyOfHealthChange(damage, HealthChangedArgument.HealthChangeType.Damage);
         if (_currentHealth <= 0)
         {
             Died();
         }
+        else
+        {
+            StartCoroutine(TriggerInvulnerabilityFrames());
+        }
     }
 
     public virtual void RestoreHealth(HealthChangeData heal)
     {
+        if (!IsHealable)
+        {
+            return;
+        }
+
         _currentHealth = Mathf.Min(_currentHealth + heal.Value, _maxHealth);
         NotifyOfHealthChange(heal, HealthChangedArgument.HealthChangeType.Heal);
+        StartCoroutine(TriggerHealInvulnerabilityFrames());
     }
 
     public virtual void Died()
@@ -43,12 +72,32 @@ public class HealthComponent : MonoBehaviour
     {
         OnHealthChanged?.Invoke(this, new HealthChangedArgument(_currentHealth, changeData, type));
     }
+
+    protected IEnumerator TriggerInvulnerabilityFrames()
+    {
+        _canTakeDamage = false;
+        yield return new WaitForSeconds(INVULNERABILITY_TIME);
+        _canTakeDamage = true;
+    }
+
+    protected IEnumerator TriggerHealInvulnerabilityFrames()
+    {
+        _canHeal = false;
+        yield return new WaitForSeconds(INVULNERABILITY_TIME);
+        _canHeal = true;
+    }
 }
 
 public struct HealthChangeData
 {
     public int Value;
     public GameObject Source;
+
+    public HealthChangeData(int value, GameObject source = null)
+    {
+        Value = value;
+        Source = source;
+    }
 }
 
 public class HealthChangedArgument : EventArgs
