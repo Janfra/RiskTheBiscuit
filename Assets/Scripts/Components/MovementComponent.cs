@@ -5,6 +5,9 @@ public class MovementComponent : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D _rb;
+    public bool CanMove => _canMove;
+    public Rigidbody2D Rigidbody => _rb;
+
     private bool _canMove = true;
 
     private void Awake()
@@ -18,7 +21,18 @@ public class MovementComponent : MonoBehaviour
     public void Move(Vector2 direction, float speed)
     {
         if (!_canMove) return;
-        _rb.linearVelocity = direction.normalized * (speed * Time.fixedDeltaTime);
+        _rb.linearVelocity = GetVelocity(direction, speed);
+    }
+
+    public bool TryMoveTo(Vector2 target, float speed)
+    {
+        if (!_canMove) return false;
+        Vector2 position = transform.position;
+        Vector2 distance = target - position;
+        Vector2 velocity = GetVelocity(distance, speed);
+        _rb.linearVelocity = velocity;
+
+        return (velocity * Time.fixedDeltaTime).sqrMagnitude >= distance.sqrMagnitude;
     }
 
     public void StopMovement()
@@ -40,5 +54,16 @@ public class MovementComponent : MonoBehaviour
     public void DisableMovement()
     {
         _canMove = false;
+    }
+
+    private Vector2 GetVelocity(Vector2 direction, float speed)
+    {
+        return direction.normalized * (speed * Time.fixedDeltaTime);
+    }
+
+    protected Vector2 GetDirectionTo(Vector2 target)
+    {
+        Vector2 position = transform.position;
+        return (target - position).normalized;
     }
 }

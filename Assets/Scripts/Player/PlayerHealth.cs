@@ -19,8 +19,9 @@ public class PlayerHealth : HealthComponent
         OnHealthChanged += InvokeUnityEvent;
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         OnHealthChanged -= InvokeUnityEvent;
     }
 
