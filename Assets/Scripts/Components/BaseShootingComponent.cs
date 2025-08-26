@@ -79,3 +79,13 @@ public abstract class BaseShootingComponent : MonoBehaviour
         OnReloadComplete();
     }
 }
+
+public interface IShootable
+{
+    public void Shoot(ShootData data);
+}
+
+public struct ShootData
+{
+    public Vector2 Direction;
+}

@@ -79,9 +79,10 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerAction
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        Vector2 pointerWorldPosition = ILookListener.PointerToWorldPosition(context, transform);
         foreach (var listener in _lookListeners)
         {
-            listener.Value.OnLook(context);
+            listener.Value.OnLook(context, pointerWorldPosition);
         }
     }
 
@@ -111,7 +112,15 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerAction
 
 public interface ILookListener
 {
-    void OnLook(InputAction.CallbackContext context);
+    void OnLook(InputAction.CallbackContext context, Vector2 pointerWorldPosition);
+
+    public static Vector2 PointerToWorldPosition(InputAction.CallbackContext context, Transform transform)
+    {
+        Camera camera = Camera.main;
+        Vector3 lookPosition = context.ReadValue<Vector2>();
+        lookPosition.z = transform.position.z - camera.transform.position.z; // Distance between camera and 2D surface
+        return camera.ScreenToWorldPoint(lookPosition);
+    }
 }
 
 public interface IMoveListener

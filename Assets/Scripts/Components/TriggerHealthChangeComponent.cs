@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TriggerHealthChangeComponent : MonoBehaviour
 {
@@ -8,8 +9,14 @@ public class TriggerHealthChangeComponent : MonoBehaviour
     private HealthChangedArgument.HealthChangeType changeType = HealthChangedArgument.HealthChangeType.Damage;
     [SerializeField]
     private int _modificationAmount = 1;
+
+    [Header("Events")]
+    [SerializeField]
+    private UnityEvent _unityOnModification;
+
     private List<HealthComponent> healthComponents = new List<HealthComponent>();
     private Action<HealthComponent> _onApplyModification;
+
 
     private void Awake()
     {
@@ -40,6 +47,7 @@ public class TriggerHealthChangeComponent : MonoBehaviour
             }
 
             _onApplyModification(healthComponent);
+            _unityOnModification?.Invoke();
         }
     }
 
@@ -50,6 +58,7 @@ public class TriggerHealthChangeComponent : MonoBehaviour
             if (healthComponent)
             {
                 _onApplyModification(healthComponent);
+                _unityOnModification?.Invoke();
             }
         }
     }

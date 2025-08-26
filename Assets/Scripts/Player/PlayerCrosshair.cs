@@ -1,8 +1,9 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class PlayerCrosshair : MonoBehaviour
+public class PlayerCrosshair : MonoBehaviour, ILookListener
 {
     [SerializeField]
     private BaseShootingComponent _shootingComponent;
@@ -20,6 +21,7 @@ public class PlayerCrosshair : MonoBehaviour
     private Color _activeColor;
 
     private Sequence _colorSequence;
+    private Vector2 _pointerPosition;
 
     private void Awake()
     {
@@ -31,7 +33,7 @@ public class PlayerCrosshair : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = _shootingComponent.GetIntendedAimDirection();
+        transform.position = _pointerPosition;
     }
 
     public void OnTriggered()
@@ -74,5 +76,10 @@ public class PlayerCrosshair : MonoBehaviour
     private void OnClearColorTween()
     {
         _colorSequence = null;
+    }
+
+    public void OnLook(InputAction.CallbackContext context, Vector2 pointerWorldPosition)
+    {
+        _pointerPosition = pointerWorldPosition;
     }
 }
