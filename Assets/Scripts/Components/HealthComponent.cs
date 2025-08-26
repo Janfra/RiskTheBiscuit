@@ -1,13 +1,21 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthComponent : MonoBehaviour
 {
     public const float INVULNERABILITY_TIME = 0.3f;
 
+    [Header("Configuration")]
     [SerializeField]
     private int _maxHealth = 100;
+
+    [Header("Events")]
+    [SerializeField]
+    protected UnityEvent _UnityOnHealed;
+    [SerializeField]
+    protected UnityEvent _UnityOnDamaged;
 
     public event EventHandler<HealthChangedArgument> OnHealthChanged;
     public bool IsInvulnerable => !_canTakeDamage;
@@ -36,6 +44,7 @@ public class HealthComponent : MonoBehaviour
 
         _currentHealth -= damage.Value;
         NotifyOfHealthChange(damage, HealthChangedArgument.HealthChangeType.Damage);
+        _UnityOnDamaged?.Invoke();
         if (_currentHealth <= 0)
         {
             Died();
@@ -55,6 +64,7 @@ public class HealthComponent : MonoBehaviour
 
         _currentHealth = Mathf.Min(_currentHealth + heal.Value, _maxHealth);
         NotifyOfHealthChange(heal, HealthChangedArgument.HealthChangeType.Heal);
+        _UnityOnHealed?.Invoke();
         StartCoroutine(TriggerHealInvulnerabilityFrames());
     }
 

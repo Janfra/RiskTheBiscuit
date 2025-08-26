@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 152484330194646308}
   - component: {fileID: 4701211617722106909}
   - component: {fileID: 570798949202976466}
+  - component: {fileID: 2104436051564042039}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -212,6 +213,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimations
   _spriteRenderer: {fileID: 4701211617722106909}
+--- !u!114 &2104436051564042039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188340850301923556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c1b8df4e45233344b7b73b311e66c50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorAnimationsComponent
+  _returnColor: {r: 1, g: 1, b: 1, a: 1}
+  _transitions:
+  - _key: Damaged
+    TargetColor: {r: 1, g: 0, b: 0, a: 1}
+    FadeInDuration: 0.1
+    FadeOutDuration: 0.1
+  - _key: Healed
+    TargetColor: {r: 1, g: 0.8378445, b: 0, a: 1}
+    FadeInDuration: 0.1
+    FadeOutDuration: 0.1
 --- !u!1 &6716097974732206314
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +250,7 @@ GameObject:
   - component: {fileID: 4475980521349071110}
   - component: {fileID: 392626083376488526}
   - component: {fileID: 7276980342530500345}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,34 +390,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   _maxHealth: 100
-  _unityOnPlayerHealed:
+  _UnityOnHealed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 570798949202976466}
-        m_TargetAssemblyTypeName: PlayerAnimations, Assembly-CSharp
-        m_MethodName: OnHealed
-        m_Mode: 1
+      - m_Target: {fileID: 2104436051564042039}
+        m_TargetAssemblyTypeName: ColorAnimationsComponent, Assembly-CSharp
+        m_MethodName: PlayTransitionWithKey
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Healed
           m_BoolArgument: 0
         m_CallState: 2
-  _unityOnPlayerDamaged:
+  _UnityOnDamaged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 570798949202976466}
-        m_TargetAssemblyTypeName: PlayerAnimations, Assembly-CSharp
-        m_MethodName: OnDamaged
-        m_Mode: 1
+      - m_Target: {fileID: 2104436051564042039}
+        m_TargetAssemblyTypeName: ColorAnimationsComponent, Assembly-CSharp
+        m_MethodName: PlayTransitionWithKey
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Damaged
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!58 &7276980342530500345
