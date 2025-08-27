@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7158811845504834783}
   - component: {fileID: 434946878471050139}
-  - component: {fileID: 1802815435529245646}
+  - component: {fileID: 2428204351280005634}
   - component: {fileID: 5202100941975824275}
   m_Layer: 7
   m_Name: BaseEnemy
@@ -61,7 +61,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1802815435529245646
+--- !u!114 &2428204351280005634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,11 +70,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2488634346301616493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d800ae903e5145438c47a6ccfd33241, type: 3}
+  m_Script: {fileID: 11500000, guid: c861b49d1e32da44b9b9bd18c8a6d38a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AI.PathfindMovement
+  m_EditorClassIdentifier: Assembly-CSharp::MovementComponent
   _rb: {fileID: 434946878471050139}
-  _speed: 200
 --- !u!114 &5202100941975824275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09bef726a3c53764fac7034965f85490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  _team: 2
   _maxHealth: 100
   _UnityOnHealed:
     m_PersistentCalls:

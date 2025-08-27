@@ -242,9 +242,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2488634346301616493, guid: 655df17115020c04b91d95b7e2a0bee2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1067699837242764190}
-    - targetCorrespondingSourceObject: {fileID: 2488634346301616493, guid: 655df17115020c04b91d95b7e2a0bee2, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3609748344522144717}
   m_SourcePrefab: {fileID: 100100000, guid: 655df17115020c04b91d95b7e2a0bee2, type: 3}
 --- !u!4 &4341902078728220864 stripped
@@ -257,20 +254,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2488634346301616493, guid: 655df17115020c04b91d95b7e2a0bee2, type: 3}
   m_PrefabInstance: {fileID: 6852435321042021407}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-1067699837242764190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9048253227084569970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b937102880bca5349b737b0e2756cb31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TriggerHealthChangeComponent
-  changeType: 0
-  _modificationAmount: 5
 --- !u!58 &3609748344522144717
 CircleCollider2D:
   m_ObjectHideFlags: 0

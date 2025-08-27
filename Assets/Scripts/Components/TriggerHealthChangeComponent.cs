@@ -13,6 +13,8 @@ public class TriggerHealthChangeComponent : MonoBehaviour
     [Header("Events")]
     [SerializeField]
     private UnityEvent _unityOnModification;
+    [SerializeField]
+    private UnityEvent _unityOnFailedModification;
 
     private List<HealthComponent> healthComponents = new List<HealthComponent>();
     private Action<HealthComponent> _onApplyModification;
@@ -48,7 +50,10 @@ public class TriggerHealthChangeComponent : MonoBehaviour
 
             _onApplyModification(healthComponent);
             _unityOnModification?.Invoke();
+            return;
         }
+
+        _unityOnFailedModification?.Invoke();
     }
 
     private void OnTriggerStay2D(Collider2D collision)

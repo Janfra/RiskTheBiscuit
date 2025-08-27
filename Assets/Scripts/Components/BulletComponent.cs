@@ -31,4 +31,9 @@ public class BulletComponent : MonoBehaviour, IShootable
     {
         Destroy(gameObject);
     }
+
+    public void OnSurfaceCollision()
+    {
+        Destroy(gameObject);
+    }
 }

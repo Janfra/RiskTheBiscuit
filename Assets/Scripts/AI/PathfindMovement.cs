@@ -30,6 +30,7 @@ namespace AI
             }
 
             _path = path;
+            _targetIndex = 0;
             StopCoroutine(FollowPath());
             StartCoroutine(FollowPath());
         }

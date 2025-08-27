@@ -103,9 +103,14 @@ namespace AStarPathfind
                 currentNode = currentNode.Parent;
             }
 
-            Vector2[] waypoints = SimplifyPath(path);
-            Array.Reverse(waypoints);
-            return waypoints;
+            if (path.Count > 0)
+            {
+                Vector2[] waypoints = SimplifyPath(path);
+                Array.Reverse(waypoints);
+                return waypoints;
+            }
+
+            return new Vector2[0];
         }
 
         private Vector2[] SimplifyPath(List<Node> path)

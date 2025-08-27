@@ -3,6 +3,38 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+public struct HealthChangeData
+{
+    public int Value;
+    public GameObject Source;
+
+    public HealthChangeData(int value, GameObject source = null)
+    {
+        Value = value;
+        Source = source;
+    }
+}
+
+public class HealthChangedArgument : EventArgs
+{
+    public enum HealthChangeType
+    {
+        Damage,
+        Heal
+    }
+
+    public readonly int CurrentHealth;
+    public readonly HealthChangeData ChangeData;
+    public readonly HealthChangeType ChangeType;
+
+    public HealthChangedArgument(int currentHealth, HealthChangeData changeData, HealthChangeType type)
+    {
+        CurrentHealth = currentHealth;
+        ChangeData = changeData;
+        ChangeType = type;
+    }
+}
+
 public class HealthComponent : MonoBehaviour
 {
     public const float INVULNERABILITY_TIME = 0.3f;
@@ -95,37 +127,5 @@ public class HealthComponent : MonoBehaviour
         _canHeal = false;
         yield return new WaitForSeconds(INVULNERABILITY_TIME);
         _canHeal = true;
-    }
-}
-
-public struct HealthChangeData
-{
-    public int Value;
-    public GameObject Source;
-
-    public HealthChangeData(int value, GameObject source = null)
-    {
-        Value = value;
-        Source = source;
-    }
-}
-
-public class HealthChangedArgument : EventArgs
-{
-    public enum HealthChangeType
-    {
-        Damage,
-        Heal
-    }
-
-    public readonly int CurrentHealth;
-    public readonly HealthChangeData ChangeData;
-    public readonly HealthChangeType ChangeType;
-
-    public HealthChangedArgument(int currentHealth, HealthChangeData changeData, HealthChangeType type)
-    {
-        CurrentHealth = currentHealth;
-        ChangeData = changeData;
-        ChangeType = type;
     }
 }
