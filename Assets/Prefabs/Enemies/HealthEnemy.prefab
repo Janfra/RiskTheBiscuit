@@ -113,6 +113,8 @@ MonoBehaviour:
     TargetColor: {r: 1, g: 0.913718, b: 0, a: 1}
     FadeInDuration: 0.1
     FadeOutDuration: 0.1
+  _spriteRenderers:
+  - {fileID: 8669683816875846161}
 --- !u!1001 &6852435321042021407
 PrefabInstance:
   m_ObjectHideFlags: 0

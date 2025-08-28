@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletComponent
   _rb: {fileID: 1619739423127114428}
-  _speed: 400
+  _speed: 550
   _unityOnShot:
     m_PersistentCalls:
       m_Calls: []

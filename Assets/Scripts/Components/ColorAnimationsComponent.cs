@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class ColorAnimationsComponent : MonoBehaviour
 {
     [Serializable]
@@ -22,17 +21,14 @@ public class ColorAnimationsComponent : MonoBehaviour
     private Color _returnColor;
     [SerializeField]
     private ColorTransition[] _transitions;
+    [SerializeField]
+    private List<SpriteRenderer> _spriteRenderers;
+
     private Dictionary<string, int> _keyToIndex = new Dictionary<string, int>();
 
-    private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
-        if (_spriteRenderer == null)
-        {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-        }
-
         for (int i = 0; i < _transitions.Length; i++)
         {
             ColorTransition transition = _transitions[i];
@@ -68,10 +64,18 @@ public class ColorAnimationsComponent : MonoBehaviour
 
     private void PlayTransition(ColorTransition transition)
     {
+        if (_spriteRenderers.Count <= 0) 
+        { 
+            return; 
+        }
+
         DOTween.Kill(this);
         Sequence colorTransition = DOTween.Sequence(this);
-        colorTransition.Append(_spriteRenderer.DOColor(transition.TargetColor, transition.FadeInDuration));
-        colorTransition.Append(_spriteRenderer.DOColor(_returnColor, transition.FadeOutDuration));
+        foreach (var renderer in _spriteRenderers)
+        {
+            colorTransition.Append(renderer.DOColor(transition.TargetColor, transition.FadeInDuration));
+            colorTransition.Append(renderer.DOColor(_returnColor, transition.FadeOutDuration));
+        }
     }
 }
 
