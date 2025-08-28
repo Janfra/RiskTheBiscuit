@@ -42,11 +42,11 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerAction
         _inputActions.Player.Disable();
     }
 
-    private void ValidateListeners<T>(List<T> list)
+    private void ValidateListeners<T>(List<InterfaceReference<T>> list) where T : class
     {
         for (int i = list.Count - 1; i >= 0; i--)
         {
-            if (list[i] == null)
+            if (list[i] == null || list[i].Value == null)
             {
                 list.RemoveAt(i);
                 Debug.LogWarning($"Removed null listener from list {list} at {i}");
@@ -58,6 +58,12 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerAction
     {
         foreach (var listener in _attackListeners)
         {
+            if (listener == null || listener.Value == null)
+            {
+                Debug.LogError($"Listener of OnAttack is null.");
+                continue;
+            }
+
             listener.Value.OnAttack(context);
         }
     }
@@ -82,6 +88,12 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerAction
         Vector2 pointerWorldPosition = ILookListener.PointerToWorldPosition(context, transform);
         foreach (var listener in _lookListeners)
         {
+            if (listener == null || listener.Value == null)
+            {
+                Debug.LogError($"Listener of OnLook is null.");
+                continue;
+            }
+
             listener.Value.OnLook(context, pointerWorldPosition);
         }
     }
@@ -90,6 +102,12 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerAction
     {
         foreach (var listener in _moveListeners)
         {
+            if (listener == null || listener.Value == null)
+            {
+                Debug.LogError($"Listener of OnMove is null.");
+                continue;
+            }
+
             listener.Value.OnMove(context);
         }
     }
