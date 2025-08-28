@@ -187,10 +187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
-  m_Graph: {fileID: -5080812356742921706, guid: 79f26bf163e3722429b598b07ad76c56, type: 2}
+  m_Graph: {fileID: 3870081045612269529, guid: adf0a6bc470e76c4a8e4c275b2c1ff44, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 274416732220948679
-  - rid: 274416732220949058
+  - rid: 274416739256107951
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -204,13 +204,13 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 6469650231688294169}
-    - rid: 274416732220949058
+    - rid: 274416739256107951
       type: {class: 'BlackboardVariable`1[[MovementComponent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 11443716654624169009
-          m_Value1: 11779089315773994225
-        Name: MovementComponent
+          m_Value0: 13111043770892147463
+          m_Value1: 2098950758375412039
+        Name: Movement
         m_Value: {fileID: 6553583691135933558}
 --- !u!114 &6553583691135933558 stripped
 MonoBehaviour:

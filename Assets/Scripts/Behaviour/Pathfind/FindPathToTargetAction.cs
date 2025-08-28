@@ -18,6 +18,12 @@ public partial class FindPathToTargetAction : Action
 
     protected override Status OnStart()
     {
+        if (Agent.Value == null)
+        {
+            LogFailure("No agent set to find path from.", true);
+            return Status.Failure;
+        }
+
         if (Target.Value == null)
         {
             LogFailure("No target to pathfind to.");
@@ -34,12 +40,12 @@ public partial class FindPathToTargetAction : Action
         _currentStatus = Status.Running;
         Path.Value.Clear();
         _pathfinder.RequestPath(new PathRequest(Agent.Value.transform.position, Target.Value.position, OnPathResult));
-        return Status.Running;
+        return Status.Waiting;
     }
 
     protected override Status OnUpdate()
     {
-        return _currentStatus;
+        return Status.Success;
     }
 
     protected void OnPathResult(Vector2[] waypoints, bool wasSucessful)
@@ -53,6 +59,7 @@ public partial class FindPathToTargetAction : Action
         {
             _currentStatus = Status.Failure;
         }
+        AwakeNode(this);
     }
 }
 

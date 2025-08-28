@@ -3,10 +3,12 @@ using Unity.Behavior;
 using UnityEngine;
 
 [Serializable, Unity.Properties.GeneratePropertyBag]
-[Condition(name: "Target Has Moved", story: "[Target] has moved more than [Threshold] from [Position]", category: "Conditions", id: "eb74c65c25f2c4df30089517717969b7")]
+[Condition(name: "Target Has Moved", story: "[Target] has moved [Operator] [Threshold] from [Position]", category: "Conditions", id: "eb74c65c25f2c4df30089517717969b7")]
 public partial class TargetHasMovedCondition : Condition
 {
     [SerializeReference] public BlackboardVariable<Transform> Target;
+    [Comparison(comparisonType: ComparisonType.All)]
+    [SerializeReference] public BlackboardVariable<ConditionOperator> Operator;
     [SerializeReference] public BlackboardVariable<float> Threshold;
     [SerializeReference] public BlackboardVariable<Vector2> Position;
 
@@ -18,7 +20,7 @@ public partial class TargetHasMovedCondition : Condition
         Vector2 distance = oldPosition - currentPosition;
         float threshold = Threshold.Value;
         threshold *= threshold;
-        return distance.sqrMagnitude > threshold;
+        return ConditionUtils.Evaluate(distance.sqrMagnitude, Operator, threshold);
     }
 
     public override void OnStart()

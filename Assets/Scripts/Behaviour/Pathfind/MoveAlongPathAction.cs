@@ -12,9 +12,8 @@ public partial class MoveAlongPathAction : Action
 {
     [SerializeReference] public BlackboardVariable<MovementComponent> MovementComponent;
     [SerializeReference] public BlackboardVariable<List<Vector2>> Path;
-    [SerializeReference] public BlackboardVariable<float> Speed;
-
-    private int _targetIndex = 0;
+    [SerializeReference] public BlackboardVariable<float> Speed = new BlackboardVariable<float>(100.0f);
+    [SerializeReference] public BlackboardVariable<int> PathIndex = new BlackboardVariable<int>(0);
     private Vector2 _targetWaypoint;
 
     protected override Status OnStart()
@@ -38,18 +37,19 @@ public partial class MoveAlongPathAction : Action
             return Status.Failure;
         }
 
-        if (_targetWaypoint != path[Mathf.Clamp(_targetIndex, 0, path.Count - 1)]) 
+        int pathIndex = PathIndex.Value;
+        if (_targetWaypoint != path[Mathf.Clamp(pathIndex, 0, path.Count - 1)]) 
         {
             // Assume new path if data dont match
-            _targetIndex = 0;
+            PathIndex.Value = 0;
         }
 
-        if (_targetIndex >= path.Count)
+        if (pathIndex >= path.Count)
         {
             return Status.Success;
         }
 
-        _targetWaypoint = path[_targetIndex];
+        _targetWaypoint = path[pathIndex];
         return Status.Running;
     }
 
@@ -57,19 +57,20 @@ public partial class MoveAlongPathAction : Action
     {
         MovementComponent movementComponent = MovementComponent.Value;
         List<Vector2> path = Path.Value;
+        
 
         if (movementComponent.TryMoveTo(_targetWaypoint, Speed.Value))
         {
-            _targetIndex++;
-            if (_targetIndex >= path.Count)
+            PathIndex.Value++;
+            if (PathIndex.Value >= path.Count)
             {
                 movementComponent.ClearVelocity();
                 return Status.Success;
             }
 
-            _targetWaypoint = path[_targetIndex];
+            _targetWaypoint = path[PathIndex.Value];
         }
-        return Status.Success;
+        return Status.Running;
     }
 
     protected override void OnEnd()

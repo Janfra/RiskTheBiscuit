@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementComponent : MonoBehaviour
@@ -24,15 +25,17 @@ public class MovementComponent : MonoBehaviour
         _rb.linearVelocity = GetVelocity(direction, speed);
     }
 
+    public void MoveTo(Vector2 target, float speed)
+    {
+        if (!_canMove) return;
+        Internal_MoveTo(target, speed);
+    }
+
     public bool TryMoveTo(Vector2 target, float speed)
     {
         if (!_canMove) return false;
-        Vector2 position = transform.position;
-        Vector2 distance = target - position;
-        Vector2 velocity = GetVelocity(distance, speed);
-        _rb.linearVelocity = velocity;
-
-        return (velocity * Time.fixedDeltaTime).sqrMagnitude >= distance.sqrMagnitude;
+        var resultData = Internal_MoveTo(target, speed);
+        return (resultData.Velocity * Time.fixedDeltaTime).sqrMagnitude >= resultData.Distance.sqrMagnitude;
     }
 
     public void StopMovement()
@@ -54,6 +57,20 @@ public class MovementComponent : MonoBehaviour
     public void DisableMovement()
     {
         _canMove = false;
+    }
+
+    private (Vector2 Distance, Vector2 Velocity) Internal_MoveTo(Vector2 target, float speed)
+    {
+        Vector2 distance = GetDistanceVector(target);
+        Vector2 velocity = GetVelocity(distance, speed);
+        _rb.linearVelocity = velocity;
+        return (distance, velocity);
+    }
+
+    private Vector2 GetDistanceVector(Vector2 target)
+    {
+        Vector2 position = transform.position;
+        return target - position;
     }
 
     private Vector2 GetVelocity(Vector2 direction, float speed)
