@@ -39,7 +39,7 @@ namespace AStarPathfind
 
             Node startNode = _nodeGrid.NodeFromWorldPosition(from);
             Node endNode = _nodeGrid.NodeFromWorldPosition(to);
-            if (startNode.IsWalkable && endNode.IsWalkable)
+            if (endNode.IsWalkable)
             {
                 Heap<Node> openSet = new Heap<Node>(_nodeGrid.GridNodeSize);
                 HashSet<Node> closedSet = new HashSet<Node>();

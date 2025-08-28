@@ -21,7 +21,6 @@ public class PlayerCrosshair : MonoBehaviour, ILookListener
     private Color _activeColor;
 
     private Sequence _colorSequence;
-    private Vector2 _pointerPosition;
 
     private void Awake()
     {
@@ -29,11 +28,6 @@ public class PlayerCrosshair : MonoBehaviour, ILookListener
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
-    }
-
-    private void LateUpdate()
-    {
-        transform.position = _pointerPosition;
     }
 
     public void OnTriggered()
@@ -80,6 +74,6 @@ public class PlayerCrosshair : MonoBehaviour, ILookListener
 
     public void OnLook(InputAction.CallbackContext context, Vector2 pointerWorldPosition)
     {
-        _pointerPosition = pointerWorldPosition;
+        transform.position = pointerWorldPosition;
     }
 }
