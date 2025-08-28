@@ -24,17 +24,18 @@ public partial class MoveToTargetAction : Action
             return Status.Failure;
         }
 
-        Movement.Value.TryMoveTo(Target.Value.position, Speed.Value);
-        return Status.Success;
+        return Status.Running;
     }
 
     protected override Status OnUpdate()
     {
-        return Status.Success;
-    }
+        if (Movement.Value.TryMoveTo(Target.Value.position, Speed.Value))
+        {
+            Movement.Value.ClearVelocity();
+            return Status.Success;
+        }
 
-    protected override void OnEnd()
-    {
+        return Status.Running;
     }
 }
 
