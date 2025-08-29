@@ -103,11 +103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4341902078728220864, guid: 1309a7bed3bca124598d1788208dc9b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -36
       objectReference: {fileID: 0}
     - target: {fileID: 4341902078728220864, guid: 1309a7bed3bca124598d1788208dc9b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 21.66
       objectReference: {fileID: 0}
     - target: {fileID: 4341902078728220864, guid: 1309a7bed3bca124598d1788208dc9b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Graph: {fileID: 3870081045612269529, guid: adf0a6bc470e76c4a8e4c275b2c1ff44, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 274416732220948679
-  - rid: 274416739256107951
+  - rid: 274416755798966663
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -204,7 +204,7 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 6469650231688294169}
-    - rid: 274416739256107951
+    - rid: 274416755798966663
       type: {class: 'BlackboardVariable`1[[MovementComponent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:

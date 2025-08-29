@@ -19,7 +19,8 @@ MonoBehaviour:
   - rid: 274416755798966741
   - rid: 274416756971537356
   - rid: 274416759902306913
-  m_VersionTimestamp: 638919921388262747
+  - rid: 274416781682803484
+  m_VersionTimestamp: 638920753538854421
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: 583033637207155821}
@@ -56,6 +57,16 @@ MonoBehaviour:
         IsExposed: 0
         m_IsShared: 1
         m_Value: PlayerQuery
+    - rid: 274416781682803484
+      type: {class: 'TypedVariableModel`1[[System.String, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 2390556098271277410
+          m_Value1: 8821499411852957269
+        Name: UnwalkableLayer
+        IsExposed: 0
+        m_IsShared: 1
+        m_Value: Unwalkable
 --- !u!114 &583033637207155821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: DefaultValues
   m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.RuntimeBlackboardAsset
-  VersionTimestamp: 638919921388262747
+  VersionTimestamp: 638920753538854421
   AssetID:
     m_Value0: 2602441191242653717
     m_Value1: 13379617554304885448
@@ -77,6 +88,7 @@ MonoBehaviour:
     - rid: 274416755798966742
     - rid: 274416756971537357
     - rid: 274416759902306914
+    - rid: 274416781682803505
   m_SharedBlackboardVariableGuids:
   - m_Value0: 3782532364865540163
     m_Value1: 1332803222732314920
@@ -84,6 +96,8 @@ MonoBehaviour:
     m_Value1: 6566861701908040774
   - m_Value0: 15157462263480948574
     m_Value1: 5358827963287692121
+  - m_Value0: 2390556098271277410
+    m_Value1: 8821499411852957269
   references:
     version: 2
     RefIds:
@@ -111,3 +125,11 @@ MonoBehaviour:
           m_Value1: 5358827963287692121
         Name: PlayerQueryLayer
         m_Value: PlayerQuery
+    - rid: 274416781682803505
+      type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2390556098271277410
+          m_Value1: 8821499411852957269
+        Name: UnwalkableLayer
+        m_Value: Unwalkable
