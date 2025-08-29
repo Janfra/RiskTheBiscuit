@@ -39,57 +39,72 @@ namespace AStarPathfind
 
             Node startNode = _nodeGrid.NodeFromWorldPosition(from);
             Node endNode = _nodeGrid.NodeFromWorldPosition(to);
-            if (endNode.IsWalkable)
+            if (!endNode.IsWalkable)
             {
-                Heap<Node> openSet = new Heap<Node>(_nodeGrid.GridNodeSize);
-                HashSet<Node> closedSet = new HashSet<Node>();
-                openSet.Add(startNode);
-
-                while (openSet.Count > 0)
+                var neighbours = _nodeGrid.GetNeighbours(endNode);
+                foreach (var neighbour in neighbours)
                 {
-                    Node currentNode = openSet.RemoveFirst();
-                    closedSet.Add(currentNode);
-
-                    if (currentNode == endNode)
+                    if (neighbour.IsWalkable)
                     {
-                        pathSuccess = true;
+                        endNode = neighbour;
                         break;
-                    }
-
-                    foreach (var neighbour in _nodeGrid.GetNeighbours(currentNode))
-                    {
-                        if (!neighbour.IsWalkable || closedSet.Contains(neighbour))
-                        {
-                            continue;
-                        }
-
-                        int movementCost = currentNode.Costs.g + GetDistance(currentNode, neighbour);
-                        if (movementCost < neighbour.Costs.g || !openSet.Contains(neighbour))
-                        {
-                            neighbour.Costs.g = movementCost;
-                            neighbour.Costs.h = GetDistance(neighbour, endNode);
-                            neighbour.Parent = currentNode;
-
-                            if (!openSet.Contains(neighbour))
-                            {
-                                openSet.Add(neighbour);
-                            }
-                            else
-                            {
-                                openSet.UpdateItem(neighbour);
-                            }
-                        }
                     }
                 }
             }
 
+            if (!endNode.IsWalkable)
+            {
+                pathSuccess = false;
+                callback(waypoints, pathSuccess);
+                yield break;
+            }
+
+            Heap<Node> openSet = new Heap<Node>(_nodeGrid.GridNodeSize);
+            HashSet<Node> closedSet = new HashSet<Node>();
+            openSet.Add(startNode);
+            while (openSet.Count > 0)
+            {
+                Node currentNode = openSet.RemoveFirst();
+                closedSet.Add(currentNode);
+
+                if (currentNode == endNode)
+                {
+                    pathSuccess = true;
+                    break;
+                }
+
+                foreach (var neighbour in _nodeGrid.GetNeighbours(currentNode))
+                {
+                    if (!neighbour.IsWalkable || closedSet.Contains(neighbour))
+                    {
+                        continue;
+                    }
+
+                    int movementCost = currentNode.Costs.g + GetDistance(currentNode, neighbour);
+                    if (movementCost < neighbour.Costs.g || !openSet.Contains(neighbour))
+                    {
+                        neighbour.Costs.g = movementCost;
+                        neighbour.Costs.h = GetDistance(neighbour, endNode);
+                        neighbour.Parent = currentNode;
+
+                        if (!openSet.Contains(neighbour))
+                        {
+                            openSet.Add(neighbour);
+                        }
+                        else
+                        {
+                            openSet.UpdateItem(neighbour);
+                        }
+                    }
+                }
+            }
 
             yield return null;
             if (pathSuccess)
             {
                 waypoints = RetracePath(startNode, endNode);
             }
-            callback(waypoints, pathSuccess);
+            callback(waypoints, pathSuccess && waypoints.Length > 0);
         }
 
         private Vector2[] RetracePath(Node startNode, Node endNode)

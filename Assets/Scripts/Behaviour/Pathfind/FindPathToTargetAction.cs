@@ -14,6 +14,7 @@ public partial class FindPathToTargetAction : Action
     [SerializeReference] public BlackboardVariable<Transform> Target;
     [SerializeReference] public BlackboardVariable<List<Vector2>> Path;
     private IPathfinder _pathfinder;
+    private Status _result;
 
     protected override Status OnStart()
     {
@@ -43,15 +44,18 @@ public partial class FindPathToTargetAction : Action
 
     protected override Status OnUpdate()
     {
-        return Status.Success;
+        return _result;
     }
 
     protected void OnPathResult(Vector2[] waypoints, bool wasSucessful)
     {
+        wasSucessful = wasSucessful && waypoints.Length > 0;
         if (wasSucessful)
         {
             Path.Value.AddRange(waypoints);
         }
+
+        _result = wasSucessful ? Status.Success : Status.Failure;
         AwakeNode(this);
     }
 }

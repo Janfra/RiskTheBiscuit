@@ -73,8 +73,8 @@ public class ColorAnimationsComponent : MonoBehaviour
         Sequence colorTransition = DOTween.Sequence(this);
         foreach (var renderer in _spriteRenderers)
         {
-            colorTransition.Append(renderer.DOColor(transition.TargetColor, transition.FadeInDuration));
-            colorTransition.Append(renderer.DOColor(_returnColor, transition.FadeOutDuration));
+            colorTransition.Insert(0, renderer.DOColor(transition.TargetColor, transition.FadeInDuration));
+            colorTransition.Insert(transition.FadeInDuration, renderer.DOColor(_returnColor, transition.FadeOutDuration));
         }
     }
 }
