@@ -143,7 +143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6418052230391414660, guid: 1309a7bed3bca124598d1788208dc9b5, type: 3}
       propertyPath: m_Constraints
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6418052230391414660, guid: 1309a7bed3bca124598d1788208dc9b5, type: 3}
       propertyPath: m_LinearDamping
