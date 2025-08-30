@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 434946878471050139}
   - component: {fileID: 2428204351280005634}
   - component: {fileID: 5202100941975824275}
+  - component: {fileID: 1561241447169817917}
   m_Layer: 7
   m_Name: BaseEnemy
   m_TagString: Untagged
@@ -91,5 +92,26 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _UnityOnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1561241447169817917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2488634346301616493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a042ac601d42e9740948c58c2541ea54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnableComponent
+  _unityOnSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  _unityOnDespawn:
+    m_PersistentCalls:
+      m_Calls: []
+  _unityOnDestroy:
     m_PersistentCalls:
       m_Calls: []

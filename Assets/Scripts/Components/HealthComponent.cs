@@ -48,6 +48,8 @@ public class HealthComponent : MonoBehaviour
     protected UnityEvent _UnityOnHealed;
     [SerializeField]
     protected UnityEvent _UnityOnDamaged;
+    [SerializeField]
+    protected UnityEvent _UnityOnDead;
 
     public event EventHandler<HealthChangedArgument> OnHealthChanged;
     public bool IsInvulnerable => !_canTakeDamage;
@@ -102,7 +104,7 @@ public class HealthComponent : MonoBehaviour
 
     public virtual void Died()
     {
-        gameObject.SetActive(false);
+        _UnityOnDead?.Invoke();
     }
 
     public void ResetHealth()
