@@ -1,0 +1,937 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad8f2220607dac4db5082ff333fafb8, type: 3}
+  m_Name: PlayerVisuals
+  m_EditorClassIdentifier: Unity.Behavior.Authoring::Unity.Behavior.BehaviorAuthoringGraph
+  Blackboard: {fileID: 5714325962633487771}
+  m_Description: 
+  m_Nodes:
+  - rid: 274416804099784776
+  - rid: 274416804099784838
+  - rid: 274416804099784969
+  - rid: 274416804099784989
+  - rid: 274416804099785308
+  m_VersionTimestamp: 638921727428053566
+  m_DebugInfo: {fileID: 2951500415048933803}
+  m_RuntimeGraph: {fileID: 6856405710893659388}
+  AssetID:
+    m_Value0: 2653807079316852907
+    m_Value1: 2037900802373559193
+  Story:
+    Story: 
+    StoryVariableNames: []
+    Variables: []
+  m_NodeModelsInfo:
+  - Name: On Start
+    Story: 
+    RuntimeTypeID:
+      m_Value0: 3335272451348827663
+      m_Value1: 11549843281177505721
+    Variables: []
+    NamedChildren: []
+  - Name: Get Aim Direction
+    Story: Set [Vector] to [Shooting] aim direction
+    RuntimeTypeID:
+      m_Value0: 602449212422618185
+      m_Value1: 1908833694555344547
+    Variables:
+    - Name: Vector
+      Type:
+        m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    - Name: Shooting
+      Type:
+        m_SerializableType: BaseShootingComponent, Assembly-CSharp, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    NamedChildren: []
+  - Name: Direction to Rotation
+    Story: 'Convert [Direction] to [Rotation]'
+    RuntimeTypeID:
+      m_Value0: 8124574613865581265
+      m_Value1: 1254899858129971987
+    Variables:
+    - Name: Direction
+      Type:
+        m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    - Name: Rotation
+      Type:
+        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    NamedChildren: []
+  - Name: Rotate at Speed
+    Story: 'Rotate [Target] at [Speed] towards [Rotation]'
+    RuntimeTypeID:
+      m_Value0: 7301792985126842159
+      m_Value1: 9234638315912304613
+    Variables:
+    - Name: Target
+      Type:
+        m_SerializableType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    - Name: Speed
+      Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      Tooltip: 
+    - Name: Rotation
+      Type:
+        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    NamedChildren: []
+  - Name: Rotate
+    Story: 'Rotate [Transform] by [Rotation]'
+    RuntimeTypeID:
+      m_Value0: 11266387484989320720
+      m_Value1: 7105787334453813370
+    Variables:
+    - Name: Transform
+      Type:
+        m_SerializableType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    - Name: Rotation
+      Type:
+        m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    - Name: Duration
+      Type:
+        m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      Tooltip: 
+    NamedChildren: []
+  - Name: Look At
+    Story: '[Transform] looks at [Target]'
+    RuntimeTypeID:
+      m_Value0: 13899140081302505572
+      m_Value1: 13892917374681012853
+    Variables:
+    - Name: Transform
+      Type:
+        m_SerializableType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    - Name: Target
+      Type:
+        m_SerializableType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    - Name: Continuous
+      Type:
+        m_SerializableType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      Tooltip: 
+    - Name: LimitToYAxis
+      Type:
+        m_SerializableType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089
+      Tooltip: 
+    NamedChildren: []
+  m_Blackboards: []
+  m_MainBlackboardAuthoringAsset: {fileID: 5714325962633487771}
+  m_CommandBuffer:
+    m_Commands: []
+  m_SubgraphsInfo: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 274416804099784776
+      type: {class: StartNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: 0, y: 0}
+        ID:
+          m_Value0: 2039850547935370460
+          m_Value1: 10093395105526772711
+        Parents: []
+        PortModels:
+        - rid: 274416804099784777
+        NodeType:
+          m_SerializableType: Unity.Behavior.Start, Unity.Behavior, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 3335272451348827663
+          m_Value1: 11549843281177505721
+        m_FieldValues: []
+        Repeat: 1
+        AllowMultipleRepeatsPerTick: 0
+    - rid: 274416804099784777
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 274416804099784776
+        m_Connections:
+        - rid: 274416804099784990
+    - rid: 274416804099784838
+      type: {class: ActionNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: 0.026227117, y: 130.03296}
+        ID:
+          m_Value0: 16761535529877394971
+          m_Value1: 5243625178712343409
+        Parents:
+        - rid: 274416804099784989
+        PortModels:
+        - rid: 274416804099784839
+        - rid: 274416804099784840
+        NodeType:
+          m_SerializableType: GetAimDirectionAction, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 602449212422618185
+          m_Value1: 1908833694555344547
+        m_FieldValues:
+        - rid: 274416804099784841
+        - rid: 274416804099784842
+    - rid: 274416804099784839
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: InputPort
+        m_PortDataFlowType: 0
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 274416804099784838
+        m_Connections: []
+    - rid: 274416804099784840
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 274416804099784838
+        m_Connections: []
+    - rid: 274416804099784841
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Vector
+        Type:
+          m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 274416804099784843
+        LinkedVariable:
+          rid: 274416804099784869
+    - rid: 274416804099784842
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Shooting
+        Type:
+          m_SerializableType: BaseShootingComponent, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 274416804099784844
+        LinkedVariable:
+          rid: 274416804099784895
+    - rid: 274416804099784843
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {x: 0, y: 0}
+    - rid: 274416804099784844
+      type: {class: 'BlackboardVariable`1[[BaseShootingComponent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 274416804099784869
+      type: {class: 'TypedVariableModel`1[[UnityEngine.Vector2, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 17005377775952330557
+          m_Value1: 16547831539780405912
+        Name: AimDirection
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {x: 0, y: 0}
+    - rid: 274416804099784895
+      type: {class: 'TypedVariableModel`1[[PlayerShooting, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 14339721772409667479
+          m_Value1: 3416617985168727335
+        Name: Shooting
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 274416804099784969
+      type: {class: ActionNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: 1.8262103, y: 145.61635}
+        ID:
+          m_Value0: 13419160004520560827
+          m_Value1: 8576184380022579531
+        Parents:
+        - rid: 274416804099784989
+        PortModels:
+        - rid: 274416804099784970
+        - rid: 274416804099784971
+        NodeType:
+          m_SerializableType: DirectionToRotationAction, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 8124574613865581265
+          m_Value1: 1254899858129971987
+        m_FieldValues:
+        - rid: 274416804099784972
+        - rid: 274416804099784973
+    - rid: 274416804099784970
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: InputPort
+        m_PortDataFlowType: 0
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 274416804099784969
+        m_Connections: []
+    - rid: 274416804099784971
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 274416804099784969
+        m_Connections: []
+    - rid: 274416804099784972
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Direction
+        Type:
+          m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 274416804099784974
+        LinkedVariable:
+          rid: 274416804099785009
+    - rid: 274416804099784973
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Rotation
+        Type:
+          m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 274416804099784975
+        LinkedVariable:
+          rid: 274416804099785026
+    - rid: 274416804099784974
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {x: 0, y: 0}
+    - rid: 274416804099784975
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {x: 0, y: 0, z: 0}
+    - rid: 274416804099784989
+      type: {class: SequenceNodeModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        Position: {x: 0.026227117, y: 130.03296}
+        ID:
+          m_Value0: 7864206123496533848
+          m_Value1: 16835704861955136945
+        Parents: []
+        PortModels:
+        - rid: 274416804099784990
+        - rid: 274416804099784991
+        Nodes:
+        - rid: 274416804099784838
+        - rid: 274416804099784969
+        - rid: 274416804099785308
+    - rid: 274416804099784990
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: InputPort
+        m_PortDataFlowType: 0
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 274416804099784989
+        m_Connections:
+        - rid: 274416804099784777
+    - rid: 274416804099784991
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 274416804099784989
+        m_Connections: []
+    - rid: 274416804099785009
+      type: {class: 'TypedVariableModel`1[[UnityEngine.Vector2, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 17005377775952330557
+          m_Value1: 16547831539780405912
+        Name: AimDirection
+        IsExposed: 0
+        m_IsShared: 0
+        m_Value: {x: 0, y: 0}
+    - rid: 274416804099785026
+      type: {class: 'TypedVariableModel`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 11038124544356977669
+          m_Value1: 15387227153504496050
+        Name: PlayerRotation
+        IsExposed: 0
+        m_IsShared: 0
+        m_Value: {x: 0, y: 0, z: 0}
+    - rid: 274416804099785308
+      type: {class: ActionNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: 7.726404, y: 228.41638}
+        ID:
+          m_Value0: 9340503965006515641
+          m_Value1: 6326057592484995481
+        Parents:
+        - rid: 274416804099784989
+        PortModels:
+        - rid: 274416804099785309
+        - rid: 274416804099785310
+        NodeType:
+          m_SerializableType: RotateAtSpeedAction, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 7301792985126842159
+          m_Value1: 9234638315912304613
+        m_FieldValues:
+        - rid: 274416804099785311
+        - rid: 274416804099785312
+        - rid: 274416804099785313
+    - rid: 274416804099785309
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: InputPort
+        m_PortDataFlowType: 0
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 274416804099785308
+        m_Connections: []
+    - rid: 274416804099785310
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 274416804099785308
+        m_Connections: []
+    - rid: 274416804099785311
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Target
+        Type:
+          m_SerializableType: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 274416804099785314
+        LinkedVariable:
+          rid: 274416804099785374
+    - rid: 274416804099785312
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Speed
+        Type:
+          m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        LocalValue:
+          rid: 274416804099785315
+        LinkedVariable:
+          rid: 274416804099785393
+    - rid: 274416804099785313
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Rotation
+        Type:
+          m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 274416804099785316
+        LinkedVariable:
+          rid: 274416804099785412
+    - rid: 274416804099785314
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 274416804099785315
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: 0
+    - rid: 274416804099785316
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {x: 0, y: 0, z: 0}
+    - rid: 274416804099785374
+      type: {class: 'TypedVariableModel`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 17461992374407280070
+          m_Value1: 18039482551511511927
+        Name: PlayerAvatar
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 274416804099785393
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 11450534588471604018
+          m_Value1: 15372927443714809325
+        Name: RotationRate
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0.5
+    - rid: 274416804099785412
+      type: {class: 'TypedVariableModel`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 11038124544356977669
+          m_Value1: 15387227153504496050
+        Name: PlayerRotation
+        IsExposed: 0
+        m_IsShared: 0
+        m_Value: {x: 0, y: 0, z: 0}
+--- !u!114 &540270673947335659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
+  m_Name: PlayerVisuals Blackboard
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.RuntimeBlackboardAsset
+  VersionTimestamp: 638921727424019771
+  AssetID:
+    m_Value0: 2653807079316852907
+    m_Value1: 2037900802373559193
+  m_Blackboard:
+    m_Variables:
+    - rid: 274416804099784778
+    - rid: 274416804099784802
+    - rid: 274416804099784812
+    - rid: 274416804099784825
+    - rid: 274416804099785094
+    - rid: 274416804099784870
+    - rid: 274416804099785027
+  m_SharedBlackboardVariableGuids: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 274416804099784778
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 0}
+    - rid: 274416804099784802
+      type: {class: 'BlackboardVariable`1[[PlayerMovement, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1619468559612602891
+          m_Value1: 10097450294148892321
+        Name: Movement
+        m_Value: {fileID: 0}
+    - rid: 274416804099784812
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17461992374407280070
+          m_Value1: 18039482551511511927
+        Name: PlayerAvatar
+        m_Value: {fileID: 0}
+    - rid: 274416804099784825
+      type: {class: 'BlackboardVariable`1[[PlayerShooting, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 14339721772409667479
+          m_Value1: 3416617985168727335
+        Name: Shooting
+        m_Value: {fileID: 0}
+    - rid: 274416804099784870
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17005377775952330557
+          m_Value1: 16547831539780405912
+        Name: AimDirection
+        m_Value: {x: 0, y: 0}
+    - rid: 274416804099785027
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11038124544356977669
+          m_Value1: 15387227153504496050
+        Name: PlayerRotation
+        m_Value: {x: 0, y: 0, z: 0}
+    - rid: 274416804099785094
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11450534588471604018
+          m_Value1: 15372927443714809325
+        Name: RotationRate
+        m_Value: 0.5
+--- !u!114 &2951500415048933803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b27bb6d9a2c8d540a10dff10acc543e, type: 3}
+  m_Name: PlayerVisuals Debug Info
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphDebugInfo
+  m_CodeBreakPointsList: []
+--- !u!114 &5714325962633487771
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd922ae02c94c87a66e46a10a7319b9, type: 3}
+  m_Name: PlayerVisuals Blackboard
+  m_EditorClassIdentifier: Unity.Behavior.Authoring::Unity.Behavior.BehaviorBlackboardAuthoringAsset
+  AssetID:
+    m_Value0: 2653807079316852907
+    m_Value1: 2037900802373559193
+  m_Variables:
+  - rid: 274416804099784779
+  - rid: 274416804099784801
+  - rid: 274416804099784811
+  - rid: 274416804099784824
+  - rid: 274416804099785093
+  - rid: 274416804099784868
+  - rid: 274416804099785025
+  m_VersionTimestamp: 638921727424019771
+  m_CommandBuffer:
+    m_Commands: []
+  m_RuntimeBlackboardAsset: {fileID: 540270673947335659}
+  references:
+    version: 2
+    RefIds:
+    - rid: 274416804099784779
+      type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 274416804099784801
+      type: {class: 'TypedVariableModel`1[[PlayerMovement, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 1619468559612602891
+          m_Value1: 10097450294148892321
+        Name: Movement
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 274416804099784811
+      type: {class: 'TypedVariableModel`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 17461992374407280070
+          m_Value1: 18039482551511511927
+        Name: PlayerAvatar
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 274416804099784824
+      type: {class: 'TypedVariableModel`1[[PlayerShooting, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 14339721772409667479
+          m_Value1: 3416617985168727335
+        Name: Shooting
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 274416804099784868
+      type: {class: 'TypedVariableModel`1[[UnityEngine.Vector2, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 17005377775952330557
+          m_Value1: 16547831539780405912
+        Name: AimDirection
+        IsExposed: 0
+        m_IsShared: 0
+        m_Value: {x: 0, y: 0}
+    - rid: 274416804099785025
+      type: {class: 'TypedVariableModel`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 11038124544356977669
+          m_Value1: 15387227153504496050
+        Name: PlayerRotation
+        IsExposed: 0
+        m_IsShared: 0
+        m_Value: {x: 0, y: 0, z: 0}
+    - rid: 274416804099785093
+      type: {class: 'TypedVariableModel`1[[System.Single, mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 11450534588471604018
+          m_Value1: 15372927443714809325
+        Name: RotationRate
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: 0.5
+--- !u!114 &6856405710893659388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db920e62f70f420bb33c771449926fa4, type: 3}
+  m_Name: PlayerVisuals
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraph
+  Graphs:
+  - rid: 274416804099785449
+  RootGraph:
+    rid: 274416804099785449
+  m_DebugInfo: {fileID: 2951500415048933803}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 274416804099785449
+      type: {class: BehaviorGraphModule, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        AuthoringAssetID:
+          m_Value0: 2653807079316852907
+          m_Value1: 2037900802373559193
+        m_DebugInfo: {fileID: 0}
+        BlackboardReference:
+          rid: 274416804099785450
+        BlackboardGroupReferences: []
+        Root:
+          rid: 274416804099785451
+        m_ActiveNodes: []
+        m_NodesToTick: []
+        m_NodesToEnd:
+          rid: 274416804099785452
+        m_EndedNodes:
+          rid: 274416804099785453
+        m_VersionTimestamp: 638921727428053566
+    - rid: 274416804099785450
+      type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        m_Blackboard:
+          rid: 274416804099785454
+        m_Source: {fileID: 540270673947335659}
+    - rid: 274416804099785451
+      type: {class: Start, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        ID:
+          m_Value0: 2039850547935370460
+          m_Value1: 10093395105526772711
+        Graph:
+          rid: 274416804099785449
+        m_Parent:
+          rid: -2
+        m_Child:
+          rid: 274416804099785455
+        Repeat: 1
+        AllowMultipleRepeatsPerTick: 0
+    - rid: 274416804099785452
+      type: {class: 'Stack`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: mscorlib}
+      data: 
+    - rid: 274416804099785453
+      type: {class: 'HashSet`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: System.Core}
+      data: 
+    - rid: 274416804099785454
+      type: {class: Blackboard, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        m_Variables:
+        - rid: 274416804099785456
+        - rid: 274416804099785457
+        - rid: 274416804099785458
+        - rid: 274416804099785459
+        - rid: 274416804099785460
+        - rid: 274416804099785461
+        - rid: 274416804099785462
+    - rid: 274416804099785455
+      type: {class: SequenceComposite, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        ID:
+          m_Value0: 7864206123496533848
+          m_Value1: 16835704861955136945
+        Graph:
+          rid: 274416804099785449
+        m_Parent:
+          rid: 274416804099785451
+        m_Children:
+        - rid: 274416804099785463
+        - rid: 274416804099785464
+        - rid: 274416804099785465
+    - rid: 274416804099785456
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 0}
+    - rid: 274416804099785457
+      type: {class: 'BlackboardVariable`1[[PlayerMovement, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1619468559612602891
+          m_Value1: 10097450294148892321
+        Name: Movement
+        m_Value: {fileID: 0}
+    - rid: 274416804099785458
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17461992374407280070
+          m_Value1: 18039482551511511927
+        Name: PlayerAvatar
+        m_Value: {fileID: 0}
+    - rid: 274416804099785459
+      type: {class: 'BlackboardVariable`1[[PlayerShooting, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 14339721772409667479
+          m_Value1: 3416617985168727335
+        Name: Shooting
+        m_Value: {fileID: 0}
+    - rid: 274416804099785460
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11450534588471604018
+          m_Value1: 15372927443714809325
+        Name: RotationRate
+        m_Value: 0.5
+    - rid: 274416804099785461
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector2, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17005377775952330557
+          m_Value1: 16547831539780405912
+        Name: AimDirection
+        m_Value: {x: 0, y: 0}
+    - rid: 274416804099785462
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11038124544356977669
+          m_Value1: 15387227153504496050
+        Name: PlayerRotation
+        m_Value: {x: 0, y: 0, z: 0}
+    - rid: 274416804099785463
+      type: {class: GetAimDirectionAction, ns: , asm: Assembly-CSharp}
+      data:
+        ID:
+          m_Value0: 16761535529877394971
+          m_Value1: 5243625178712343409
+        Graph:
+          rid: 274416804099785449
+        m_Parent:
+          rid: 274416804099785455
+        Vector:
+          rid: 274416804099785461
+        Shooting:
+          rid: 274416804099785466
+    - rid: 274416804099785464
+      type: {class: DirectionToRotationAction, ns: , asm: Assembly-CSharp}
+      data:
+        ID:
+          m_Value0: 13419160004520560827
+          m_Value1: 8576184380022579531
+        Graph:
+          rid: 274416804099785449
+        m_Parent:
+          rid: 274416804099785455
+        Direction:
+          rid: 274416804099785461
+        Rotation:
+          rid: 274416804099785462
+    - rid: 274416804099785465
+      type: {class: RotateAtSpeedAction, ns: , asm: Assembly-CSharp}
+      data:
+        ID:
+          m_Value0: 9340503965006515641
+          m_Value1: 6326057592484995481
+        Graph:
+          rid: 274416804099785449
+        m_Parent:
+          rid: 274416804099785455
+        Target:
+          rid: 274416804099785458
+        Speed:
+          rid: 274416804099785460
+        Rotation:
+          rid: 274416804099785462
+    - rid: 274416804099785466
+      type: {class: 'ComponentToComponentBlackboardVariable`2[[PlayerShooting, Assembly-CSharp],[BaseShootingComponent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+        m_LinkedVariable:
+          rid: 274416804099785459

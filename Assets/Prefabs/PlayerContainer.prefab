@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1136655619443953936}
   - component: {fileID: 3630465184713980776}
+  - component: {fileID: 6661295095213072705}
   m_Layer: 9
   m_Name: PlayerContainer
   m_TagString: Untagged
@@ -186,6 +187,34 @@ MonoBehaviour:
   _cam: {fileID: 4810708603241572119}
   _target: {fileID: 3556391175019415019}
   _cameraDistance: -11
+--- !u!114 &6661295095213072705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700551147736064351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
+  m_Graph: {fileID: 2708726387373643234, guid: 4663a18652a1dc449b3cb62680ad13dd, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 274416755798966832
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 274416755798966832
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 8604107035693365641}
 --- !u!1001 &3049977383748831587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,6 +267,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2593266323655324171, guid: 106d246b922486f4cb34521403c8cc45, type: 3}
+      propertyPath: m_Graph
+      value: 
+      objectReference: {fileID: 6856405710893659388, guid: ab1019697a37d42499a3f584fb13481c, type: 2}
     - target: {fileID: 4475980521349071110, guid: 106d246b922486f4cb34521403c8cc45, type: 3}
       propertyPath: _ShootRate
       value: 0.2
@@ -286,5 +319,10 @@ PrefabInstance:
 --- !u!4 &3556391175019415019 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1948199000457792648, guid: 106d246b922486f4cb34521403c8cc45, type: 3}
+  m_PrefabInstance: {fileID: 3049977383748831587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8604107035693365641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6716097974732206314, guid: 106d246b922486f4cb34521403c8cc45, type: 3}
   m_PrefabInstance: {fileID: 3049977383748831587}
   m_PrefabAsset: {fileID: 0}
