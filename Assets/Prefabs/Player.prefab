@@ -352,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
   _ReloadDuration: 0.8
+  _ShootRate: 0.2
   _MaxAmmo: 2
   _unityOnShoot:
     m_PersistentCalls:
@@ -430,6 +431,9 @@ MonoBehaviour:
           m_StringArgument: Damaged
           m_BoolArgument: 0
         m_CallState: 2
+  _UnityOnDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!58 &7276980342530500345
 CircleCollider2D:
   m_ObjectHideFlags: 0

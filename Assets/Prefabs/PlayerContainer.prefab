@@ -238,6 +238,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4475980521349071110, guid: 106d246b922486f4cb34521403c8cc45, type: 3}
+      propertyPath: _ShootRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475980521349071110, guid: 106d246b922486f4cb34521403c8cc45, type: 3}
+      propertyPath: _unityOnShoot.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475980521349071110, guid: 106d246b922486f4cb34521403c8cc45, type: 3}
+      propertyPath: _unityOnReload.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699907123209908493, guid: 106d246b922486f4cb34521403c8cc45, type: 3}
+      propertyPath: _lookListeners.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6716097974732206314, guid: 106d246b922486f4cb34521403c8cc45, type: 3}
       propertyPath: m_Name
       value: Player

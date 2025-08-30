@@ -9,6 +9,9 @@ public abstract class BaseShootingComponent : MonoBehaviour
     protected float _ReloadDuration;
 
     [SerializeField]
+    protected float _ShootRate = 0.2f;
+
+    [SerializeField]
     protected int _MaxAmmo = 1;
 
     [Header("Events")]
@@ -34,14 +37,16 @@ public abstract class BaseShootingComponent : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public virtual void TryShoot()
+    public virtual bool TryShoot()
     {
         if (HasAmmo)
         {
             OnShoot();
             _unityOnShoot?.Invoke();
             ReduceAmmo();
+            return true;
         }
+        return false;
     }
 
     public virtual void StartReload()

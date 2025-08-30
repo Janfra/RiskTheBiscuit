@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerAction
         }
 
         _inputActions.Player.Enable();
+        SubscribeRegisteredListeners();
     }
 
     private void OnDisable()
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerAction
             return;
         }
 
+        UnsubscribeRegisteredListeners();
         _inputActions.Player.RemoveCallbacks(this);
         _inputActions.Player.Disable();
     }
@@ -54,18 +57,63 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerAction
         }
     }
 
-    public void OnAttack(InputAction.CallbackContext context)
+    private void SubscribeRegisteredListeners()
     {
-        foreach (var listener in _attackListeners)
+        SubscribeListenerList(_attackListeners, _inputActions.Player.Attack);
+    }
+
+    private void UnsubscribeRegisteredListeners()
+    {
+        UnsubscribeListenerList(_attackListeners, _inputActions.Player.Attack);
+    }
+
+    private void SubscribeListenerList<T>(List<InterfaceReference<T>> list, InputAction action) where T : class, IInputListener
+    {
+        foreach (var listenerContainer in list)
         {
-            if (listener == null || listener.Value == null)
+            IInputListener listener = listenerContainer.Value;
+            if (listener.TargetEventsFlag.HasFlag(IInputListener.InputEvents.Started))
             {
-                Debug.LogError($"Listener of OnAttack is null.");
-                continue;
+                action.started += listener.OnActionStarted;
             }
 
-            listener.Value.OnAttack(context);
+            if (listener.TargetEventsFlag.HasFlag(IInputListener.InputEvents.Performed))
+            {
+                action.performed += listener.OnActionPerformed;
+            }
+
+            if (listener.TargetEventsFlag.HasFlag(IInputListener.InputEvents.Cancelled))
+            {
+                action.canceled += listener.OnActionCancelled;
+            }
         }
+    }
+
+    private void UnsubscribeListenerList<T>(List<InterfaceReference<T>> list, InputAction action) where T : class, IInputListener
+    {
+        foreach (var listenerContainer in list)
+        {
+            IInputListener listener = listenerContainer.Value;
+            if (listener.TargetEventsFlag.HasFlag(IInputListener.InputEvents.Started))
+            {
+                action.started -= listener.OnActionStarted;
+            }
+
+            if (listener.TargetEventsFlag.HasFlag(IInputListener.InputEvents.Performed))
+            {
+                action.performed -= listener.OnActionPerformed;
+            }
+
+            if (listener.TargetEventsFlag.HasFlag(IInputListener.InputEvents.Cancelled))
+            {
+                action.canceled -= listener.OnActionCancelled;
+            }
+        }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+
     }
 
     public void OnCrouch(InputAction.CallbackContext context)
@@ -128,6 +176,22 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerAction
     }
 }
 
+public interface IInputListener
+{
+    [Flags]
+    public enum InputEvents
+    {
+        Started = 1 << 0,
+        Performed = 1 << 1,
+        Cancelled = 1 << 2,
+    }
+
+    public InputEvents TargetEventsFlag { get; }
+    public void OnActionStarted(InputAction.CallbackContext context);
+    public void OnActionPerformed(InputAction.CallbackContext context);
+    public void OnActionCancelled(InputAction.CallbackContext context);
+}
+
 public interface ILookListener
 {
     void OnLook(InputAction.CallbackContext context, Vector2 pointerWorldPosition);
@@ -146,7 +210,7 @@ public interface IMoveListener
     void OnMove(InputAction.CallbackContext context);
 }
 
-public interface IAttackListener
+public interface IAttackListener : IInputListener
 {
-    void OnAttack(InputAction.CallbackContext context);
+
 }   

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +14,17 @@ public class PlayerShooting : BaseShootingComponent, IAttackListener, ILookListe
     private List<InterfaceReference<IShootable>> _shootablesPrefabs;
     private Vector2 _aimDirection;
 
+    private const IInputListener.InputEvents _events = IInputListener.InputEvents.Started | IInputListener.InputEvents.Cancelled;
+    public IInputListener.InputEvents TargetEventsFlag => _events;
+
+    private bool _shootInputActive;
+    private float _shootCooldown;
+
+    private void Update()
+    {
+        _shootCooldown = Mathf.Max(0, _shootCooldown - Time.deltaTime);
+    }
+
     protected override void OnShoot()
     {
         ShootData shootData;
@@ -26,6 +38,7 @@ public class PlayerShooting : BaseShootingComponent, IAttackListener, ILookListe
                 IShootable shootableInstance = (IShootable)Instantiate(shootable.Object, _bulletOrigin.position, _bulletOrigin.rotation);
                 Debug.Assert(shootableInstance != null);
                 shootableInstance.Shoot(shootData);
+                _shootCooldown = _ShootRate;
             }
         }
     }
@@ -39,14 +52,6 @@ public class PlayerShooting : BaseShootingComponent, IAttackListener, ILookListe
     public override Vector2 GetIntendedAimDirection()
     {
         return _aimDirection;
-    }
-
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            TryShoot();
-        }
     }
 
     public void OnLook(InputAction.CallbackContext context, Vector2 pointerWorldPosition)
@@ -68,5 +73,36 @@ public class PlayerShooting : BaseShootingComponent, IAttackListener, ILookListe
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, _bulletOriginDistance);
+    }
+
+    // Attack
+    public void OnActionStarted(InputAction.CallbackContext context)
+    {
+        StartCoroutine(ShootAtRate());
+    }
+
+    public void OnActionPerformed(InputAction.CallbackContext context)
+    {
+        
+    }
+
+    public void OnActionCancelled(InputAction.CallbackContext context)
+    {
+        _shootInputActive = false;
+    }
+    // End attack
+
+    protected IEnumerator ShootAtRate()
+    {
+        _shootInputActive = true;
+        while (_shootInputActive)
+        {
+            if (_shootCooldown <= 0.0f)
+            {
+                TryShoot();
+            }
+
+            yield return null;
+        }
     }
 }
